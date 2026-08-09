@@ -29,6 +29,7 @@ export interface RouteVariant {
   paths: PathSegment[];
   alerts?: AlertInfo[];
   cost?: string;
+  hours?: string;
 }
 
 export interface RouteEntry {
