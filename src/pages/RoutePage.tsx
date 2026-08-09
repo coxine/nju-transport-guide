@@ -66,7 +66,7 @@ export function RoutePage() {
             返回
           </button>
           <div className="flex items-center gap-2">
-            <span className={`text-sm font-semibold ${t.colorText}`}>
+            <span className={`font-semibold ${t.colorText} text-[18px]`}>
               {originName} → {destName}
             </span>
             {isNight ? (

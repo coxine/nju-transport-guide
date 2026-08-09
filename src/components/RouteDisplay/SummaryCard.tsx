@@ -16,15 +16,15 @@ export function SummaryCard({ variant, isNight }: SummaryCardProps) {
     <div
       className={`rounded-xl ${t.cardBg} p-4 shadow-sm ring-1 ${t.borderColor}`}
     >
-      <div className="flex items-center justify-around">
-        <div className="flex items-center gap-1">
+      <div className="flex items-center">
+        <div className="flex flex-1 items-center justify-center gap-1">
           <span className={`text-[28px] font-bold ${t.colorText}`}>
             {totalDuration}
           </span>
           <span className={`text-[16px] ${t.colorSecondary}`}>分钟</span>
         </div>
         <div className={`h-10 w-px ${t.dividerColor}`} />
-        <div className="flex  items-center gap-1">
+        <div className="flex flex-1 items-center justify-center gap-1">
           <span className={`text-[28px] font-bold ${t.colorText}`}>
             {totalStops}
           </span>
@@ -33,7 +33,7 @@ export function SummaryCard({ variant, isNight }: SummaryCardProps) {
         {variant.cost && (
           <>
             <div className={`h-10 w-px ${t.dividerColor}`} />
-            <div className="flex  items-center gap-1">
+            <div className="flex flex-1 items-center justify-center gap-1">
               <span className={`text-[28px] font-bold ${t.colorText}`}>
                 {variant.cost}
               </span>
