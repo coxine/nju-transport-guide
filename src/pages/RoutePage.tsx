@@ -55,74 +55,78 @@ export function RoutePage() {
   const t = useNightTheme(isNight);
 
   return (
-    <div className={`mx-auto min-h-svh max-w-md px-4 pb-8 ${t.bgColor}`}>
-      <div className="sticky top-0 z-20 -mx-4 bg-inherit px-4 pt-4 pb-3">
-        <div className="flex items-center justify-between">
-          <button
-            onClick={() => navigate("/")}
-            className={`flex items-center gap-1 text-sm font-medium ${t.colorSecondary}`}
-          >
-            <RiArrowLeftLine size={16} />
-            返回
-          </button>
-          <div className="flex items-center gap-2">
-            <span className={`font-semibold ${t.colorText} text-[18px]`}>
-              {originName} → {destName}
-            </span>
-            {isNight ? (
-              <span className="rounded bg-indigo-900 px-1.5 py-0.5 text-[14px] font-medium text-indigo-200">
-                夜间
+    <div className={`min-h-svh ${t.bgColor}`}>
+      <div className={`sticky top-0 z-20 ${t.bgColor} pb-3`}>
+        <div className="mx-auto max-w-md px-4 pt-4">
+          <div className="flex items-center justify-between">
+            <button
+              onClick={() => navigate("/")}
+              className={`flex items-center gap-1 text-sm font-medium ${t.colorSecondary}`}
+            >
+              <RiArrowLeftLine size={16} />
+              返回
+            </button>
+            <div className="flex items-center gap-2">
+              <span className={`font-semibold ${t.colorText} text-[18px]`}>
+                {originName} → {destName}
               </span>
-            ) : (
-              <span className="rounded bg-amber-400 px-1.5 py-0.5 text-[14px] font-medium text-gray-700">
-                日间
-              </span>
-            )}
+              {isNight ? (
+                <span className="rounded bg-indigo-900 px-1.5 py-0.5 text-[14px] font-medium text-indigo-200">
+                  夜间
+                </span>
+              ) : (
+                <span className="rounded bg-amber-400 px-1.5 py-0.5 text-[14px] font-medium text-gray-700">
+                  日间
+                </span>
+              )}
+            </div>
+            <DayNightToggle isNight={isNight} onChange={handleNightToggle} />
           </div>
-          <DayNightToggle isNight={isNight} onChange={handleNightToggle} />
         </div>
       </div>
 
-      <div className="mt-4">
-        {!entry || variants.length === 0 ? (
-          <div
-            className={`rounded-xl p-8 text-center ${t.cardBg} ${t.colorMuted} shadow-sm ring-1 ${t.borderColor}`}
-          >
-            <RiEmotionSadLine size={36} className="mx-auto" />
-            <p className="mt-2 text-[18px]">
-              {isNight
-                ? "该路线暂无夜间方案"
-                : "暂无可用路线，请尝试其他起终点"}
-            </p>
-          </div>
-        ) : (
-          <>
-            {variants.length > 1 && (
-              <div className="mb-3 flex gap-2">
-                {variants.map((_, i) => (
-                  <button
-                    key={i}
-                    onClick={() => setVariantIndex(i)}
-                    className={`rounded-full px-3 py-1 text-[14px] font-medium transition-all ${
-                      variantIndex === i
-                        ? "bg-primary text-white"
-                        : `${t.cardBg} ${t.colorSecondary} ring-1 ${t.borderColor}`
-                    }`}
-                  >
-                    方案 {i + 1}
-                  </button>
-                ))}
-              </div>
-            )}
+      <div className="mx-auto max-w-md px-4 pb-8">
+        <div className="mt-4">
+          {!entry || variants.length === 0 ? (
+            <div
+              className={`rounded-xl p-8 text-center ${t.cardBg} ${t.colorMuted} shadow-sm ring-1 ${t.borderColor}`}
+            >
+              <RiEmotionSadLine size={36} className="mx-auto" />
+              <p className="mt-2 text-[18px]">
+                {isNight
+                  ? "该路线暂无夜间方案"
+                  : "暂无可用路线，请尝试其他起终点"}
+              </p>
+            </div>
+          ) : (
+            <>
+              {variants.length > 1 && (
+                <div className="mb-3 flex gap-2">
+                  {variants.map((_, i) => (
+                    <button
+                      key={i}
+                      onClick={() => setVariantIndex(i)}
+                      className={`rounded-full px-3 py-1 text-[14px] font-medium transition-all ${
+                        variantIndex === i
+                          ? "bg-primary text-white"
+                          : `${t.cardBg} ${t.colorSecondary} ring-1 ${t.borderColor}`
+                      }`}
+                    >
+                      方案 {i + 1}
+                    </button>
+                  ))}
+                </div>
+              )}
 
-            {currentVariant && (
-              <div className="flex flex-col gap-3">
-                <SummaryCard variant={currentVariant} isNight={isNight} />
-                <Timeline variant={currentVariant} isNight={isNight} />
-              </div>
-            )}
-          </>
-        )}
+              {currentVariant && (
+                <div className="flex flex-col gap-3">
+                  <SummaryCard variant={currentVariant} isNight={isNight} />
+                  <Timeline variant={currentVariant} isNight={isNight} />
+                </div>
+              )}
+            </>
+          )}
+        </div>
       </div>
     </div>
   );
