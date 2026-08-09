@@ -141,7 +141,7 @@ export const LINES: Record<string, LineInfo> = {
 };
 
 export function getLineColor(lineKey?: string): string {
-  return lineKey ? (LINES[lineKey]?.color ?? "#9ca3af") : "#9ca3af";
+  return lineKey ? (LINES[lineKey]?.color ?? "#adb1b9") : "#adb1b9";
 }
 
 export function getLineTextColor(lineKey?: string): string {

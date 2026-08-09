@@ -15,20 +15,39 @@ interface TimelineNodeProps {
 const NODE_SIZE = 20;
 const ICON_TOP = 2;
 
-function NodeIcon({ position }: { position: TimelinePosition }) {
+function NodeIcon({
+  position,
+  isNight,
+}: {
+  position: TimelinePosition;
+  isNight: boolean;
+}) {
+  const hollowCls = isNight
+    ? "border-3 border-white bg-night-card"
+    : "border-3 border-black bg-white";
   switch (position) {
     case "start":
+      return (
+        <div
+          className="relative z-10 flex items-center justify-center bg-gray-500 text-white text-[14px] font-bold"
+          style={{ width: NODE_SIZE, height: NODE_SIZE }}
+        >
+          起
+        </div>
+      );
     case "end":
       return (
         <div
-          className="relative z-10 border-3 border-black bg-white"
+          className="relative z-10 flex items-center justify-center bg-gray-500 text-white text-[14px] font-bold"
           style={{ width: NODE_SIZE, height: NODE_SIZE }}
-        />
+        >
+          终
+        </div>
       );
     case "intermediate":
       return (
         <div
-          className="relative z-10 rounded-full border-3 border-black bg-white"
+          className={`relative z-10 rounded-full ${hollowCls}`}
           style={{
             width: NODE_SIZE,
             height: NODE_SIZE,
@@ -78,8 +97,14 @@ function modeLabel(mode: PathSegment["mode"]): string {
   }
 }
 
-function ModeIcon({ mode }: { mode: PathSegment["mode"] }) {
-  const cls = "shrink-0 text-gray-500";
+function ModeIcon({
+  mode,
+  isNight,
+}: {
+  mode: PathSegment["mode"];
+  isNight: boolean;
+}) {
+  const cls = isNight ? "shrink-0 text-night-text" : "shrink-0 text-gray-500";
   const MODE_ICON_SIZE = 24;
   switch (mode) {
     case "metro":
@@ -100,7 +125,7 @@ function PathInfo({ path, isNight }: { path: PathSegment; isNight: boolean }) {
   return (
     <div className="pt-2">
       <div className="flex items-center gap-2">
-        <ModeIcon mode={path.mode} />
+        <ModeIcon mode={path.mode} isNight={isNight} />
         <span
           className="rounded px-1.5 py-0.5 text-[12px] font-medium"
           style={{ backgroundColor: lineColor, color: lineTextColor }}
@@ -166,7 +191,7 @@ export function TimelineNode({
           />
         )}
         <div style={{ marginTop: ICON_TOP }}>
-          <NodeIcon position={position} />
+          <NodeIcon position={position} isNight={isNight} />
         </div>
       </div>
       <div className="min-w-0 flex-1 pb-3">
