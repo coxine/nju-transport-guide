@@ -1,22 +1,31 @@
-import type { RouteData, StationOption } from "../../types";
+import type { RouteData } from "../../types";
+import { toCampusData } from "./to-campus";
+import { toHubData } from "./to-hub";
+import { crossCampusData } from "./cross-campus";
+
+export { toCampusData, toHubData, crossCampusData };
+
+export type QueryScene = "to-campus" | "to-hub" | "cross-campus";
+
+export const sceneRouteData: Record<QueryScene, RouteData> = {
+  "to-campus": toCampusData,
+  "to-hub": toHubData,
+  "cross-campus": crossCampusData,
+};
+
+const uniqueIds = (ids: string[]) => [...new Set(ids)];
 import { STATIONS } from "../stations";
-import { nanjingSouthXianlin } from "./nanjing-south-xianlin";
-import { nanjingSouthGulou } from "./nanjing-south-gulou";
-import { lukouAirportXianlin } from "./lukou-airport-xianlin";
-import { lukouAirportGulou } from "./lukou-airport-gulou";
+const toOptions = (ids: string[]) =>
+  uniqueIds(ids).map((id) => ({ id, name: STATIONS[id]?.name ?? id }));
 
 const allRoutes = [
-  nanjingSouthXianlin,
-  nanjingSouthGulou,
-  lukouAirportXianlin,
-  lukouAirportGulou,
+  ...toCampusData.routes,
+  ...toHubData.routes,
+  ...crossCampusData.routes,
 ];
 
-const uniqueIds = (ids: string[]): StationOption[] =>
-  [...new Set(ids)].map((id) => ({ id, name: STATIONS[id]?.name ?? id }));
-
 export const routeData: RouteData = {
-  origins: uniqueIds(allRoutes.map((r) => r.originId)),
-  destinations: uniqueIds(allRoutes.map((r) => r.destId)),
+  origins: toOptions(allRoutes.map((r) => r.originId)),
+  destinations: toOptions(allRoutes.map((r) => r.destId)),
   routes: allRoutes,
 };

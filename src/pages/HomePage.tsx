@@ -1,21 +1,13 @@
 import { useState, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { StationSelector } from "../components/Controls/StationSelector";
-import { DayNightToggle } from "../components/Controls/DayNightToggle";
-import { routeData } from "../data/routes";
-import { STATIONS } from "../data/stations";
-
-type QueryScene = "to-campus" | "to-hub" | "cross-campus";
+import { sceneRouteData, type QueryScene } from "../data/routes";
 
 const scenes: { key: QueryScene; label: string }[] = [
   { key: "to-campus", label: "枢纽 → 学校" },
   { key: "to-hub", label: "学校 → 枢纽" },
   { key: "cross-campus", label: "跨校区出行" },
 ];
-
-function filterByCategory(ids: string[], category: "hub" | "campus") {
-  return ids.filter((id) => STATIONS[id]?.category === category);
-}
 
 export function HomePage() {
   const [scene, setScene] = useState<QueryScene>("to-campus");
@@ -24,48 +16,13 @@ export function HomePage() {
   const [isNight, setIsNight] = useState(new Date().getHours() < 6);
   const navigate = useNavigate();
 
-  const { origins, destinations } = useMemo(() => {
-    switch (scene) {
-      case "to-campus":
-        return {
-          origins: filterByCategory(
-            routeData.origins.map((o) => o.id),
-            "hub",
-          ),
-          destinations: filterByCategory(
-            routeData.destinations.map((d) => d.id),
-            "campus",
-          ),
-        };
-      case "to-hub":
-        return {
-          origins: filterByCategory(
-            routeData.origins.map((o) => o.id),
-            "campus",
-          ),
-          destinations: filterByCategory(
-            routeData.destinations.map((d) => d.id),
-            "hub",
-          ),
-        };
-      case "cross-campus":
-        return {
-          origins: filterByCategory(
-            routeData.origins.map((o) => o.id),
-            "campus",
-          ),
-          destinations: filterByCategory(
-            routeData.destinations.map((d) => d.id),
-            "campus",
-          ),
-        };
-    }
+  const { originOptions, destOptions } = useMemo(() => {
+    const data = sceneRouteData[scene];
+    return {
+      originOptions: data.origins,
+      destOptions: data.destinations,
+    };
   }, [scene]);
-
-  const originOptions = routeData.origins.filter((o) => origins.includes(o.id));
-  const destOptions = routeData.destinations.filter((d) =>
-    destinations.includes(d.id),
-  );
 
   const canSearch = originId && destId;
 
@@ -80,10 +37,6 @@ export function HomePage() {
       <div className="mb-8 text-center">
         <h1 className="text-3xl font-bold text-gray-900">NJU Transport</h1>
         <p className="mt-2 text-sm text-gray-500">南京大学新生交通指南</p>
-      </div>
-
-      <div className="mb-6 flex w-full items-center justify-center">
-        <DayNightToggle isNight={isNight} onChange={setIsNight} />
       </div>
 
       <div className="mb-6 flex w-full gap-1 rounded-xl bg-gray-100 p-1">
@@ -118,9 +71,25 @@ export function HomePage() {
           activeClass="bg-primary"
         />
 
+        <label className="flex items-center gap-2 py-3 cursor-pointer">
+          <input
+            type="checkbox"
+            checked={isNight}
+            onChange={(e) => setIsNight(e.target.checked)}
+            className="h-4 w-4 accent-primary"
+          />
+          <span className="text-sm font-medium text-gray-700">
+            查看夜间方案
+          </span>
+        </label>
+
         <button
           disabled={!canSearch}
-          onClick={() => navigate(`/route/${originId}/${destId}`)}
+          onClick={() =>
+            navigate(
+              `/route/${originId}/${destId}${isNight ? "?mode=night" : ""}`,
+            )
+          }
           className={`mt-2 w-full rounded-xl py-3 text-sm font-semibold transition-all ${
             canSearch
               ? "bg-primary text-white shadow-md hover:bg-primary-dark active:scale-[0.98]"
