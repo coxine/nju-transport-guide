@@ -9,8 +9,8 @@ export interface PathSegment {
   fromNodeId: string;
   toNodeId: string;
   mode: "metro" | "bus" | "walk";
-  duration: number;
-  stopCount?: number;
+  duration: string;
+  stopCount?: string;
   direction?: string;
   lineName?: string;
   lineKey?: string;

@@ -121,26 +121,28 @@ function PathInfo({ path, isNight }: { path: PathSegment; isNight: boolean }) {
   const lineTextColor = getLineTextColor(path.lineKey);
   const colorMuted = isNight ? "text-night-text" : "text-gray-400";
   const colorSecondary = isNight ? "text-night-text" : "text-gray-500";
+  const colorPrimary = isNight ? "text-night-text" : "text-black-500";
 
   return (
     <div className="pt-2">
       <div className="flex items-center gap-2">
         <ModeIcon mode={path.mode} isNight={isNight} />
         <span
-          className="rounded px-1.5 py-0.5 text-[12px] font-medium"
+          className="rounded px-1.5 py-0.5 text-[14px] font-medium"
           style={{ backgroundColor: lineColor, color: lineTextColor }}
         >
           {path.lineName ?? modeLabel(path.mode)}
         </span>
-      </div>
-      <div className="flex items-center gap-1 mt-1">
         {path.direction && (
-          <span className={`text-[14px] ${colorSecondary}`}>
-            {path.direction}方向
+          <span className={`text-[16px] whitespace-nowrap ${colorPrimary}`}>
+            <span className="text-[14px]">往 </span>
+            <span className="font-medium">{path.direction}</span>
           </span>
         )}
+      </div>
+      <div className="flex flex-wrap items-center gap-1 mt-1">
         {path.firstDeparture && path.lastDeparture && (
-          <span className={`text-[14px] ${colorMuted}`}>
+          <span className={`text-[14px] whitespace-nowrap ${colorMuted}`}>
             首班 {path.firstDeparture} 末班 {path.lastDeparture}
           </span>
         )}
@@ -157,7 +159,9 @@ function PathInfo({ path, isNight }: { path: PathSegment; isNight: boolean }) {
         <span>{path.duration}分钟</span>
       </div>
       {path.tips && (
-        <p className="mt-1 text-[14px] text-amber-600">{path.tips}</p>
+        <p className="mt-1 text-[14px] text-amber-600 whitespace-pre-line">
+          {path.tips}
+        </p>
       )}
     </div>
   );
@@ -199,7 +203,9 @@ export function TimelineNode({
           {node.name}
         </span>
         {node.tips && (
-          <p className="mt-1 text-[14px] text-amber-600">{node.tips}</p>
+          <p className="mt-1 text-[14px] text-amber-600 whitespace-pre-line">
+            {node.tips}
+          </p>
         )}
         {nextPath && <PathInfo path={nextPath} isNight={isNight} />}
       </div>

@@ -7,8 +7,6 @@ interface SummaryCardProps {
 }
 
 export function SummaryCard({ variant, isNight }: SummaryCardProps) {
-  const totalStops = variant.paths.reduce((s, p) => s + (p.stopCount ?? 0), 0);
-
   const t = useNightTheme(isNight);
 
   return (
@@ -27,15 +25,9 @@ export function SummaryCard({ variant, isNight }: SummaryCardProps) {
             <div className={`h-10 w-px ${t.dividerColor}`} />
           </>
         )}
-        <div className="flex flex-1 items-center justify-center gap-1">
-          <span className={`text-[28px] font-bold ${t.colorText}`}>
-            {totalStops}
-          </span>
-          <span className={`text-[16px] ${t.colorSecondary}`}>站</span>
-        </div>
+
         {variant.cost && (
           <>
-            <div className={`h-10 w-px ${t.dividerColor}`} />
             <div className="flex flex-1 items-center justify-center gap-1">
               <span className={`text-[28px] font-bold ${t.colorText}`}>
                 {variant.cost}
