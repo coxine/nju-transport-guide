@@ -1,13 +1,12 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { useParams, useNavigate, useSearchParams } from "react-router-dom";
-import { RiEmotionSadLine } from "@remixicon/react";
-import { StationSelector } from "../components/Controls/StationSelector";
+import { RiEmotionSadLine, RiArrowLeftLine } from "@remixicon/react";
 import { DayNightToggle } from "../components/Controls/DayNightToggle";
 import { SummaryCard } from "../components/RouteDisplay/SummaryCard";
 import { Timeline } from "../components/RouteDisplay/Timeline";
 import { useRoute } from "../hooks/useRoute";
 import { useNightTheme } from "../hooks/useNightTheme";
-import { routeData } from "../data/routes";
+import { STATIONS } from "../data/stations";
 
 function isNightByDefault(): boolean {
   return new Date().getHours() < 6;
@@ -38,15 +37,14 @@ export function RoutePage() {
   const [variantIndex, setVariantIndex] = useState(0);
   const currentVariant = variants[variantIndex] ?? null;
 
-  const handleOriginChange = (id: string) => {
-    setVariantIndex(0);
-    navigate(`/route/${id}/${currentDestId}`);
-  };
-
-  const handleDestChange = (id: string) => {
-    setVariantIndex(0);
-    navigate(`/route/${currentOriginId}/${id}`);
-  };
+  const originName = useMemo(
+    () => STATIONS[currentOriginId]?.name ?? currentOriginId,
+    [currentOriginId],
+  );
+  const destName = useMemo(
+    () => STATIONS[currentDestId]?.name ?? currentDestId,
+    [currentDestId],
+  );
 
   const handleNightToggle = (night: boolean) => {
     setNightManual(night);
@@ -59,30 +57,25 @@ export function RoutePage() {
   return (
     <div className={`mx-auto min-h-svh max-w-md px-4 pb-8 ${t.bgColor}`}>
       <div className="sticky top-0 z-20 -mx-4 bg-inherit px-4 pt-4 pb-3">
-        <div className="mb-4 flex items-center justify-between">
-          <h1 className={`text-lg font-bold ${t.colorText}`}>NJU Transport</h1>
-          <DayNightToggle isNight={isNight} onChange={handleNightToggle} />
-        </div>
-
-        <div
-          className={`rounded-xl p-3 ${t.cardBg} shadow-sm ring-1 ${t.borderColor}`}
-        >
-          <div className="flex flex-col gap-3">
-            <StationSelector
-              label="出发地"
-              options={routeData.origins}
-              selectedId={currentOriginId}
-              onChange={handleOriginChange}
-              activeClass="bg-blue-600"
-            />
-            <StationSelector
-              label="目的地"
-              options={routeData.destinations}
-              selectedId={currentDestId}
-              onChange={handleDestChange}
-              activeClass="bg-emerald-600"
-            />
+        <div className="flex items-center justify-between">
+          <button
+            onClick={() => navigate("/")}
+            className={`flex items-center gap-1 text-sm font-medium ${t.colorSecondary}`}
+          >
+            <RiArrowLeftLine size={16} />
+            返回
+          </button>
+          <div className="flex items-center gap-2">
+            <span className={`text-sm font-semibold ${t.colorText}`}>
+              {originName} → {destName}
+            </span>
+            {isNight && (
+              <span className="rounded bg-indigo-900 px-1.5 py-0.5 text-[10px] font-medium text-indigo-200">
+                夜间
+              </span>
+            )}
           </div>
+          <DayNightToggle isNight={isNight} onChange={handleNightToggle} />
         </div>
       </div>
 
@@ -108,7 +101,7 @@ export function RoutePage() {
                     onClick={() => setVariantIndex(i)}
                     className={`rounded-full px-4 py-1.5 text-xs font-medium transition-all ${
                       variantIndex === i
-                        ? "bg-blue-600 text-white"
+                        ? "bg-primary text-white"
                         : `${t.cardBg} ${t.colorSecondary} ring-1 ${t.borderColor}`
                     }`}
                   >

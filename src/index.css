@@ -1,6 +1,9 @@
 @import "tailwindcss";
 
 @theme {
+  --color-primary: #69075a;
+  --color-primary-dark: #4c0541;
+
   --color-night-bg: #0f172a;
   --color-night-card: #1e293b;
   --color-night-border: #334155;

@@ -25,12 +25,12 @@ const alertStyles: Record<
     nightText: "text-amber-300",
   },
   info: {
-    bg: "bg-blue-50",
-    border: "border-blue-300",
-    text: "text-blue-800",
-    nightBg: "bg-blue-900/30",
-    nightBorder: "border-blue-700",
-    nightText: "text-blue-300",
+    bg: "bg-primary/10",
+    border: "border-primary/30",
+    text: "text-primary-dark",
+    nightBg: "bg-primary/20",
+    nightBorder: "border-primary/40",
+    nightText: "text-primary/80",
   },
   tip: {
     bg: "bg-emerald-50",
