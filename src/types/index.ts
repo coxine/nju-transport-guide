@@ -28,6 +28,7 @@ export interface RouteVariant {
   nodes: StationNode[];
   paths: PathSegment[];
   alerts?: AlertInfo[];
+  cost?: string;
 }
 
 export interface RouteEntry {

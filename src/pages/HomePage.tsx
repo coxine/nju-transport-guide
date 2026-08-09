@@ -8,9 +8,9 @@ import { STATIONS } from "../data/stations";
 type QueryScene = "to-campus" | "to-hub" | "cross-campus";
 
 const scenes: { key: QueryScene; label: string }[] = [
-  { key: "to-campus", label: "去学校" },
-  { key: "to-hub", label: "去枢纽" },
-  { key: "cross-campus", label: "跨校区" },
+  { key: "to-campus", label: "枢纽 → 学校" },
+  { key: "to-hub", label: "学校 → 枢纽" },
+  { key: "cross-campus", label: "跨校区出行" },
 ];
 
 function filterByCategory(ids: string[], category: "hub" | "campus") {

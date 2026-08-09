@@ -69,9 +69,13 @@ export function RoutePage() {
             <span className={`text-sm font-semibold ${t.colorText}`}>
               {originName} → {destName}
             </span>
-            {isNight && (
-              <span className="rounded bg-indigo-900 px-1.5 py-0.5 text-[10px] font-medium text-indigo-200">
+            {isNight ? (
+              <span className="rounded bg-indigo-900 px-1.5 py-0.5 text-[14px] font-medium text-indigo-200">
                 夜间
+              </span>
+            ) : (
+              <span className="rounded bg-amber-400 px-1.5 py-0.5 text-[14px] font-medium text-gray-700">
+                日间
               </span>
             )}
           </div>
@@ -85,7 +89,7 @@ export function RoutePage() {
             className={`rounded-xl p-8 text-center ${t.cardBg} ${t.colorMuted} shadow-sm ring-1 ${t.borderColor}`}
           >
             <RiEmotionSadLine size={36} className="mx-auto" />
-            <p className="mt-2 text-sm">
+            <p className="mt-2 text-[18px]">
               {isNight
                 ? "该路线暂无夜间方案"
                 : "暂无可用路线，请尝试其他起终点"}
@@ -99,7 +103,7 @@ export function RoutePage() {
                   <button
                     key={i}
                     onClick={() => setVariantIndex(i)}
-                    className={`rounded-full px-4 py-1.5 text-xs font-medium transition-all ${
+                    className={`rounded-full px-3 py-1 text-[14px] font-medium transition-all ${
                       variantIndex === i
                         ? "bg-primary text-white"
                         : `${t.cardBg} ${t.colorSecondary} ring-1 ${t.borderColor}`

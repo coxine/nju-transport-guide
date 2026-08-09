@@ -63,7 +63,7 @@ export function AlertCard({ alert, isNight }: AlertCardProps) {
 
   return (
     <div
-      className={`rounded-lg border px-3 py-2 text-xs ${
+      className={`rounded-lg border px-3 py-2 text-[14px] ${
         isNight
           ? `${style.nightBg} ${style.nightBorder} ${style.nightText}`
           : `${style.bg} ${style.border} ${style.text}`
