@@ -35,7 +35,7 @@ export function HomePage() {
   return (
     <div className="mx-auto flex min-h-svh max-w-md flex-col items-center justify-center px-4">
       <div className="mb-8 text-center">
-        <h1 className="text-3xl font-bold text-gray-900">NJU 新生交通指南</h1>
+        <h1 className="text-3xl font-bold text-gray-900">NJU 交通指南</h1>
       </div>
 
       <div className="mb-6 flex w-full gap-1 rounded-xl bg-gray-100 p-1">
