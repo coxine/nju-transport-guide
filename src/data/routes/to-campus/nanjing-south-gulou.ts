@@ -1,35 +1,20 @@
 import type { RouteEntry } from "../../../types";
 
-export const lukouAirportGulou: RouteEntry = {
-  originId: "lukou-airport",
+export const nanjingSouthGulou: RouteEntry = {
+  originId: "nanjing-south",
   destId: "gulou",
   day: [
     {
       nodes: [
-        { id: "la-gl", name: "禄口机场" },
-        { id: "ns-lagl", name: "南京南站" },
-        { id: "glz-lagl", name: "鼓楼/珠江路" },
-        { id: "glcampus-lagl", name: "鼓楼校区北园/南园" },
+        { id: "ns-gl", name: "南京南站" },
+        { id: "glz-gl", name: "鼓楼/珠江路" },
+        { id: "glcampus-gl", name: "鼓楼校区" },
       ],
       paths: [
         {
-          id: "pl1",
-          fromNodeId: "la-gl",
-          toNodeId: "ns-lagl",
-          mode: "metro",
-          duration: "36",
-          stopCount: "7",
-          direction: "南京南站",
-          lineName: "S1号线",
-          lineKey: "nj-line-s1",
-          firstDeparture: "06:00",
-          lastDeparture: "22:42",
-          tips: "南京南站换乘通道较长，步行约8-10分钟",
-        },
-        {
-          id: "pl2",
-          fromNodeId: "ns-lagl",
-          toNodeId: "glz-lagl",
+          id: "pg1",
+          fromNodeId: "ns-gl",
+          toNodeId: "glz-gl",
           mode: "metro",
           duration: "21-25",
           stopCount: "9-10",
@@ -41,43 +26,28 @@ export const lukouAirportGulou: RouteEntry = {
           tips: "前往北园请在鼓楼站下车，前往南园请在珠江路站下车",
         },
         {
-          id: "pl3",
-          fromNodeId: "glz-lagl",
-          toNodeId: "glcampus-lagl",
+          id: "pg2",
+          fromNodeId: "glz-gl",
+          toNodeId: "glcampus-gl",
           mode: "walk",
           duration: "3-5",
           tips: "往南园：珠江路1号口出站，沿广州路步行即可抵达广州路门\n往北园：鼓楼5号口出站，沿北京西路步行可抵达北京西路门；在天津路左拐即可抵达天津路门",
         },
       ],
-      cost: "8",
-      hours: "1.5-2",
+      cost: "4",
+      hours: "0.75-1",
     },
   ],
   night: [
     {
       nodes: [
-        {
-          id: "la-gl",
-          name: "禄口机场 T1/T2",
-        },
         { id: "ns-lagl", name: "南京南站" },
         { id: "glz-lagl", name: "中山路·珠江路南" },
         { id: "glcampus-lagl", name: "鼓楼校区南园" },
       ],
       paths: [
         {
-          id: "pl1",
-          fromNodeId: "la-gl",
-          toNodeId: "ns-lagl",
-          mode: "bus",
-          duration: "38",
-          stopCount: "1-2",
-          lineName: "机场巴士1号线/2号线/南站专线",
-          lineKey: "nj-bus",
-          tips: "末班车衔接当日最晚航班\n到达南京南站后需步行至公交枢纽换乘",
-        },
-        {
-          id: "pl2",
+          id: "pgn1",
           fromNodeId: "ns-lagl",
           toNodeId: "glz-lagl",
           mode: "bus",
@@ -91,15 +61,15 @@ export const lukouAirportGulou: RouteEntry = {
           tips: "约20-25分钟一班",
         },
         {
-          id: "pl3",
+          id: "pgn2",
           fromNodeId: "glz-lagl",
           toNodeId: "glcampus-lagl",
           mode: "walk",
           duration: "5",
         },
       ],
-      cost: "27",
-      hours: "2-2.5",
+      cost: "2",
+      hours: "1",
     },
   ],
 };
