@@ -126,6 +126,12 @@ export const LINES: Record<string, LineInfo> = {
     textColor: "#FFFFFF",
     mode: "metro",
   },
+  "nj-bus-airport-1": {
+    name: "机场巴士1号线",
+    color: "#F2943C",
+    textColor: "#FFFFFF",
+    mode: "bus",
+  },
   "nj-bus-y1": {
     name: "夜间Y1路",
     color: "#F2943C",

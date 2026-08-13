@@ -28,9 +28,9 @@ const alertStyles: Record<
     bg: "bg-primary/10",
     border: "border-primary/30",
     text: "text-primary-dark",
-    nightBg: "bg-primary/20",
-    nightBorder: "border-primary/40",
-    nightText: "text-primary/80",
+    nightBg: "bg-primary/50",
+    nightBorder: "border-primary/70",
+    nightText: "text-purple-200",
   },
   tip: {
     bg: "bg-emerald-50",
