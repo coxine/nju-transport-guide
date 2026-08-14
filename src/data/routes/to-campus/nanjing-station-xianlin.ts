@@ -96,12 +96,13 @@ export const nanjingStationXianlin: RouteEntry = {
           tips: "出站后穿过地下通道，即可到达仙林校区南门",
         },
       ],
-      cost: "2.4",
+      cost: "5",
       hours: "1",
       alerts: [
         {
           type: "info",
-          message: "非高峰时段，公交可能比地铁更迅速。",
+          message:
+            "非高峰时段，公交可能比地铁更迅速。本路线使用交通卡仅需2.4元。",
         },
       ],
     },
