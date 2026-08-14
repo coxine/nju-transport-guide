@@ -8,4 +8,5 @@ export const STATIONS: Record<string, StationMeta> = {
   "lukou-airport": { name: "禄口机场" },
   xianlin: { name: "仙林校区" },
   gulou: { name: "鼓楼校区" },
+  pukou: { name: "浦口校区" },
 };
