@@ -2,6 +2,7 @@ import type { RouteData } from "../../../types";
 import { STATIONS } from "../../stations";
 import { nanjingSouthXianlin } from "./nanjing-south-xianlin";
 import { nanjingSouthGulou } from "./nanjing-south-gulou";
+import { nanjingSouthPukou } from "./nanjing-south-pukou";
 import { nanjingStationXianlin } from "./nanjing-station-xianlin";
 import { nanjingStationGulou } from "./nanjing-station-gulou";
 import { lukouAirportXianlin } from "./lukou-airport-xianlin";
@@ -12,6 +13,7 @@ import { nanjingStationPukou } from "./nanjing-station-pukou";
 const routes = [
   nanjingSouthXianlin,
   nanjingSouthGulou,
+  nanjingSouthPukou,
   nanjingStationXianlin,
   nanjingStationGulou,
   lukouAirportXianlin,
