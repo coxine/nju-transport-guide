@@ -35,7 +35,7 @@ export const nanjingSouthGulou: RouteEntry = {
         },
       ],
       cost: "4",
-      hours: "0.75-1",
+      hours: "0.75",
     },
   ],
   night: [

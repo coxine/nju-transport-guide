@@ -96,8 +96,8 @@ export const nanjingSouthXianlin: RouteEntry = {
           tips: "约50分钟一班",
         },
       ],
-      cost: "2",
-      hours: "1",
+      cost: "4",
+      hours: "2",
     },
   ],
 };

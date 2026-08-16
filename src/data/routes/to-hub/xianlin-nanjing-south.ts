@@ -1,15 +1,15 @@
 import type { RouteEntry } from "../../../types";
 
-export const xianlinNanjingStation: RouteEntry = {
+export const xianlinNanjingSouth: RouteEntry = {
   originId: "xianlin",
-  destId: "nanjing-station",
+  destId: "nanjing-south",
   day: [
     {
       nodes: [
         { id: "glcampus-lagl", name: "仙林校区南门" },
         { id: "glz-lagl", name: "南大仙林校区" },
         { id: "ns-lagl", name: "大行宫" },
-        { id: "la-gl", name: "南京站" },
+        { id: "la-gl", name: "南京南站" },
       ],
       paths: [
         {
@@ -37,70 +37,22 @@ export const xianlinNanjingStation: RouteEntry = {
           fromNodeId: "ns-lagl",
           toNodeId: "la-gl",
           mode: "metro",
-          duration: "10",
-          stopCount: "4",
-          direction: "林场",
+          duration: "18",
+          stopCount: "8",
+          direction: "秣陵/胜太西路",
           lineName: "3号线",
           lineKey: "nj-line-3",
           firstDeparture: "06:00",
-          lastDeparture: "23:47（周日-四）/ 00:07（周五-六）",
+          lastDeparture: "23:36（周日-四）/ 00:06 （周五-六）",
         },
       ],
       cost: "6",
-      hours: "1",
-    },
-    {
-      nodes: [
-        { id: "glcampus-lagl", name: "仙林校区南门" },
-        { id: "glz-lagl", name: "南大仙林校区" },
-        { id: "ns-lagl", name: "新庄广场东" },
-        { id: "la-gl", name: "南京站·南广场东" },
-      ],
-      paths: [
-        {
-          id: "p1",
-          fromNodeId: "glcampus-lagl",
-          toNodeId: "glz-lagl",
-          mode: "walk",
-          duration: "2",
-          tips: "公交站在校门左侧，无需穿越地道",
-        },
-        {
-          id: "p2",
-          fromNodeId: "glz-lagl",
-          toNodeId: "ns-lagl",
-          mode: "bus",
-          duration: "35",
-          stopCount: "12",
-          direction: "中保村",
-          lineName: "D1路",
-          lineKey: "nj-bus",
-          firstDeparture: "05:15",
-          lastDeparture: "21:00",
-          tips: "约25分钟一班",
-        },
-        {
-          id: "p3",
-          fromNodeId: "ns-lagl",
-          toNodeId: "la-gl",
-          mode: "bus",
-          duration: "5",
-          stopCount: "2",
-          direction: "南京站·南广场东",
-          lineName: "71/97/309路",
-          lineKey: "nj-bus",
-          firstDeparture: "05:10",
-          lastDeparture: "22:15",
-          tips: "亦可乘坐141/206路前往北广场乘车",
-        },
-      ],
-      cost: "5",
       hours: "1",
       alerts: [
         {
           type: "info",
           message:
-            "非高峰时段，公交可能比地铁更迅速。本路线使用交通卡仅需2.4元。",
+            "从仙林大学城到南京南站，亦有南京公交开行的定制直达公交H46/47路，班次较少，可在微信小程序“优点出行“的“校园巴士”栏目预约。",
         },
       ],
     },
@@ -108,14 +60,16 @@ export const xianlinNanjingStation: RouteEntry = {
   night: [
     {
       nodes: [
-        { id: "ns-lagl", name: "仙林校区南门" },
+        { id: "glcampus-lagl", name: "仙林校区南门" },
+
         { id: "glz-lagl", name: "南大仙林校区" },
         { id: "lpl-lagl", name: "南京站·南广场东" },
+        { id: "ns-lagl", name: "南京南站" },
       ],
       paths: [
         {
-          id: "p1",
-          fromNodeId: "ns-lagl",
+          id: "p0",
+          fromNodeId: "glcampus-lagl",
           toNodeId: "glz-lagl",
           mode: "walk",
           duration: "2",
@@ -127,7 +81,7 @@ export const xianlinNanjingStation: RouteEntry = {
           toNodeId: "lpl-lagl",
           mode: "bus",
           duration: "45",
-          stopCount: "29",
+          stopCount: "28",
           direction: "南京站·南广场东",
           lineName: "Y34路",
           lineKey: "nj-bus",
@@ -135,9 +89,23 @@ export const xianlinNanjingStation: RouteEntry = {
           lastDeparture: "04:50",
           tips: "约50分钟一班",
         },
+        {
+          id: "p2",
+          fromNodeId: "lpl-lagl",
+          toNodeId: "ns-lagl",
+          mode: "bus",
+          duration: "38",
+          stopCount: "22",
+          direction: "南京南站",
+          lineName: "Y8路",
+          lineKey: "nj-bus",
+          firstDeparture: "23:30",
+          lastDeparture: "04:30",
+          tips: "约60分钟一班",
+        },
       ],
-      cost: "2",
-      hours: "1",
+      cost: "4",
+      hours: "2",
     },
   ],
 };
