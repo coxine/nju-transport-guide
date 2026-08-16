@@ -7,6 +7,7 @@ import { Timeline } from "../components/RouteDisplay/Timeline";
 import { useRoute } from "../hooks/useRoute";
 import { useNightTheme } from "../hooks/useNightTheme";
 import { STATIONS } from "../data/stations";
+import { getScene } from "../data/routes";
 
 function isNightByDefault(): boolean {
   return new Date().getHours() < 6;
@@ -25,8 +26,11 @@ export function RoutePage() {
 
   const [nightManual, setNightManual] = useState<boolean | null>(null);
 
+  const supportsNight =
+    getScene(currentOriginId, currentDestId) !== "cross-campus";
   const nightFromUrl = searchParams.get("mode") === "night";
   const isNight = (() => {
+    if (!supportsNight) return false;
     if (nightManual !== null) return nightManual;
     if (nightFromUrl) return true;
     return isNightByDefault();
@@ -58,29 +62,39 @@ export function RoutePage() {
     <div className={`min-h-svh ${t.bgColor}`}>
       <div className={`sticky top-0 z-20 ${t.bgColor} pb-3`}>
         <div className="mx-auto max-w-md px-4 pt-4">
-          <div className="flex items-center justify-between">
-            <button
-              onClick={() => navigate("/")}
-              className={`flex items-center gap-1 text-sm font-medium ${t.colorSecondary}`}
-            >
-              <RiArrowLeftLine size={16} />
-              返回
-            </button>
+          <div className="grid grid-cols-[1fr_auto_1fr] items-center">
+            <div className="justify-self-start">
+              <button
+                onClick={() => navigate("/")}
+                className={`flex items-center gap-1 text-sm font-medium ${t.colorSecondary}`}
+              >
+                <RiArrowLeftLine size={16} />
+                返回
+              </button>
+            </div>
             <div className="flex items-center gap-2">
-              <span className={`font-semibold ${t.colorText} text-[18px]`}>
+              <span className={`font-semibold ${t.colorText} text-[16px]`}>
                 {originName} → {destName}
               </span>
-              {isNight ? (
-                <span className="rounded bg-indigo-900 px-1.5 py-0.5 text-[14px] font-medium text-indigo-200">
-                  夜间
-                </span>
-              ) : (
-                <span className="rounded bg-amber-400 px-1.5 py-0.5 text-[14px] font-medium text-gray-700">
-                  日间
-                </span>
+              {supportsNight &&
+                (isNight ? (
+                  <span className="rounded bg-indigo-900 px-1.5 py-0.5 text-[14px] font-medium text-indigo-200">
+                    夜间
+                  </span>
+                ) : (
+                  <span className="rounded bg-amber-400 px-1.5 py-0.5 text-[14px] font-medium text-gray-700">
+                    日间
+                  </span>
+                ))}
+            </div>
+            <div className="justify-self-end">
+              {supportsNight && (
+                <DayNightToggle
+                  isNight={isNight}
+                  onChange={handleNightToggle}
+                />
               )}
             </div>
-            <DayNightToggle isNight={isNight} onChange={handleNightToggle} />
           </div>
         </div>
       </div>

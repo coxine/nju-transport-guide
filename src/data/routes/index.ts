@@ -13,6 +13,19 @@ export const sceneRouteData: Record<QueryScene, RouteData> = {
   "cross-campus": crossCampusData,
 };
 
+export function getScene(originId: string, destId: string): QueryScene | null {
+  for (const key of Object.keys(sceneRouteData) as QueryScene[]) {
+    if (
+      sceneRouteData[key].routes.some(
+        (r) => r.originId === originId && r.destId === destId,
+      )
+    ) {
+      return key;
+    }
+  }
+  return null;
+}
+
 const uniqueIds = (ids: string[]) => [...new Set(ids)];
 import { STATIONS } from "../stations";
 const toOptions = (ids: string[]) =>

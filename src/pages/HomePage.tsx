@@ -36,11 +36,13 @@ export function HomePage() {
   }, [originId, routes, destOptions]);
 
   const canSearch = originId && destId;
+  const supportsNight = scene !== "cross-campus";
 
   const handleSceneChange = (key: QueryScene) => {
     setScene(key);
     setOriginId(null);
     setDestId(null);
+    setIsNight(false);
   };
 
   const handleOriginChange = (id: string) => {
@@ -92,23 +94,25 @@ export function HomePage() {
           disabledIds={disabledDestIds ?? undefined}
         />
 
-        <label className="flex items-center gap-2 py-3 cursor-pointer">
-          <input
-            type="checkbox"
-            checked={isNight}
-            onChange={(e) => setIsNight(e.target.checked)}
-            className="h-4 w-4 accent-primary"
-          />
-          <span className="text-sm font-medium text-gray-700">
-            查看夜间方案
-          </span>
-        </label>
+        {supportsNight && (
+          <label className="flex items-center gap-2 py-3 cursor-pointer">
+            <input
+              type="checkbox"
+              checked={isNight}
+              onChange={(e) => setIsNight(e.target.checked)}
+              className="h-4 w-4 accent-primary"
+            />
+            <span className="text-sm font-medium text-gray-700">
+              查看夜间方案
+            </span>
+          </label>
+        )}
 
         <button
           disabled={!canSearch}
           onClick={() =>
             navigate(
-              `/route/${originId}/${destId}${isNight ? "?mode=night" : ""}`,
+              `/route/${originId}/${destId}${isNight && supportsNight ? "?mode=night" : ""}`,
             )
           }
           className={`mt-2 w-full rounded-xl py-3 text-sm font-semibold transition-all ${
