@@ -93,7 +93,7 @@ export function RoutePage() {
             >
               <RiEmotionSadLine size={36} className="mx-auto" />
               <p className="mt-2 text-[18px]">
-                暂无公共交通路线方案，建议打车出行。
+                由于换乘次数较多或路程耗时较长，暂无合适的公共交通路线方案，建议打车出行。
               </p>
             </div>
           ) : (
