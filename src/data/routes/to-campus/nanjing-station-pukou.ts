@@ -34,6 +34,7 @@ export const nanjingStationPukou: RouteEntry = {
           stopCount: "3-4",
           lineName: "503路/531路/636路/664路/D4路",
           lineKey: "nj-bus",
+          tips: "从3号口出站，向前步行至公交站",
         },
         {
           id: "pnp4",

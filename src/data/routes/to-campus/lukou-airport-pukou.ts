@@ -39,6 +39,7 @@ export const lukouAirportPukou: RouteEntry = {
           lineKey: "nj-line-3",
           firstDeparture: "06:00",
           lastDeparture: "23:29（周日-四）/ 23:49（周五-六）",
+          tips: "从3号口出站，向前步行至公交站",
         },
         {
           id: "pnp3",
