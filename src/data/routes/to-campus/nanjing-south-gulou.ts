@@ -18,7 +18,7 @@ export const nanjingSouthGulou: RouteEntry = {
           mode: "metro",
           duration: "21-25",
           stopCount: "9-10",
-          direction: "八卦洲大桥南",
+          direction: "八卦洲大桥南/河定桥",
           lineName: "1号线",
           lineKey: "nj-line-1",
           firstDeparture: "06:15",

@@ -30,7 +30,7 @@ export const xianlinNanjingStation: RouteEntry = {
           lineName: "2号线",
           lineKey: "nj-line-2",
           firstDeparture: "06:02",
-          lastDeparture: "23:02（周日-四）/ 23:32 （周五-六）",
+          lastDeparture: "23:02（周日-四）/ 23:32（周五-六）",
         },
         {
           id: "p3",

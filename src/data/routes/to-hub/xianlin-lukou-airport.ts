@@ -31,7 +31,7 @@ export const xianlinLukouAirport: RouteEntry = {
           lineName: "2号线",
           lineKey: "nj-line-2",
           firstDeparture: "06:02",
-          lastDeparture: "23:02（周日-四）/ 23:32 （周五-六）",
+          lastDeparture: "23:02（周日-四）/ 23:32（周五-六）",
         },
         {
           id: "p3",
@@ -44,7 +44,7 @@ export const xianlinLukouAirport: RouteEntry = {
           lineName: "3号线",
           lineKey: "nj-line-3",
           firstDeparture: "06:00",
-          lastDeparture: "23:36（周日-四）/ 00:06 （周五-六）",
+          lastDeparture: "23:36（周日-四）/ 00:06（周五-六）",
           tips: "南京南站换乘通道较长，步行约8-10分钟",
         },
         {
@@ -58,7 +58,7 @@ export const xianlinLukouAirport: RouteEntry = {
           lineName: "S1号线",
           lineKey: "nj-line-s1",
           firstDeparture: "06:00",
-          lastDeparture: "22:40（周日-四）/ 23:00 （周五-六）",
+          lastDeparture: "22:40（周日-四）/ 23:00（周五-六）",
         },
       ],
       cost: "10",
