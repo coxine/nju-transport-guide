@@ -134,16 +134,16 @@ function PathInfo({ path, isNight }: { path: PathSegment; isNight: boolean }) {
 
   return (
     <div className="pt-2">
-      <div className="flex items-center gap-2">
+      <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
         <ModeIcon mode={path.mode} isNight={isNight} />
         <span
-          className="rounded px-1.5 py-0.5 text-[14px] font-medium"
+          className="whitespace-nowrap shrink-0 rounded px-1.5 py-0.5 text-[14px] font-medium"
           style={{ backgroundColor: lineColor, color: lineTextColor }}
         >
           {path.lineName ?? modeLabel(path.mode)}
         </span>
         {path.direction && (
-          <span className={`text-[16px] whitespace-nowrap ${colorPrimary}`}>
+          <span className={`text-[16px] ${colorPrimary}`}>
             <span className="text-[14px]">往 </span>
             <span className="font-medium">{path.direction}</span>
           </span>
@@ -151,7 +151,7 @@ function PathInfo({ path, isNight }: { path: PathSegment; isNight: boolean }) {
       </div>
       <div className="flex flex-wrap items-center gap-1 mt-1">
         {path.firstDeparture && path.lastDeparture && (
-          <span className={`text-[14px] whitespace-nowrap ${colorMuted}`}>
+          <span className={`text-[14px] ${colorMuted}`}>
             首班 {path.firstDeparture} 末班 {path.lastDeparture}
           </span>
         )}
