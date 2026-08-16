@@ -1,0 +1,66 @@
+import type { RouteEntry } from "../../../types";
+
+export const pukouLukouAirport: RouteEntry = {
+  originId: "pukou",
+  destId: "lukou-airport",
+  day: [
+    {
+      nodes: [
+        { id: "pkcampus-lapk", name: "浦口校区" },
+        { id: "gx-lapk", name: "高新路·新科一路" },
+        { id: "dc-lapk", name: "东大成贤学院" },
+        { id: "ns-lapk", name: "南京南站" },
+        { id: "la-lapk", name: "禄口机场" },
+      ],
+      paths: [
+        {
+          id: "p1",
+          fromNodeId: "pkcampus-lapk",
+          toNodeId: "gx-lapk",
+          mode: "walk",
+          duration: "5",
+        },
+        {
+          id: "p2",
+          fromNodeId: "gx-lapk",
+          toNodeId: "dc-lapk",
+          mode: "bus",
+          duration: "6",
+          stopCount: "3-4",
+          lineName: "503路/531路/636路/664路/D4路",
+          lineKey: "nj-bus",
+        },
+        {
+          id: "p3",
+          fromNodeId: "dc-lapk",
+          toNodeId: "ns-lapk",
+          mode: "metro",
+          duration: "47",
+          stopCount: "19",
+          direction: "秣陵/胜太西路",
+          lineName: "3号线",
+          lineKey: "nj-line-3",
+          firstDeparture: "05:56",
+          lastDeparture: "23:06（周日-四）/ 23:36（周五-六）",
+          tips: "南京南站换乘通道较长，步行约8-10分钟",
+        },
+        {
+          id: "p4",
+          fromNodeId: "ns-lapk",
+          toNodeId: "la-lapk",
+          mode: "metro",
+          duration: "36",
+          stopCount: "7",
+          direction: "空港新城江宁",
+          lineName: "S1号线",
+          lineKey: "nj-line-s1",
+          firstDeparture: "06:00",
+          lastDeparture: "22:40（周日-四）/ 23:00（周五-六）",
+        },
+      ],
+      cost: "12-13",
+      hours: "2",
+    },
+  ],
+  night: [],
+};

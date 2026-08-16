@@ -7,7 +7,7 @@ export const pukouNanjingSouth: RouteEntry = {
     {
       nodes: [
         { id: "pkcampus-nspk", name: "浦口校区" },
-        { id: "gx-pk", name: "高新路·新科一路" },
+        { id: "gx-nspk", name: "高新路·新科一路" },
         { id: "dc-nspk", name: "东大成贤学院站" },
         { id: "ns-nspk", name: "南京南站" },
       ],
