@@ -1,27 +1,27 @@
 import type { RouteEntry } from "../../../types";
 
-export const suzhouXinquStationSuzhouCampus: RouteEntry = {
-  originId: "suzhou-xinqu-station",
-  destId: "suzhou-campus",
+export const suzhouCampusSuzhouXinquStation: RouteEntry = {
+  originId: "suzhou-campus",
+  destId: "suzhou-xinqu-station",
   day: [
     {
       nodes: [
-        { id: "sxq-su", name: "苏州新区火车站" },
         { id: "nju-su", name: "南京大学东" },
+        { id: "sxq-su", name: "苏州新区火车站" },
       ],
       paths: [
         {
-          id: "su1",
-          fromNodeId: "sxq-su",
-          toNodeId: "nju-su",
+          id: "p1",
+          fromNodeId: "nju-su",
+          toNodeId: "sxq-su",
           mode: "tram",
           duration: "47",
           stopCount: "13",
-          direction: "南京大学东",
+          direction: "苏州新区火车站",
           lineName: "有轨电车2号线",
           lineKey: "su-tram-2",
-          firstDeparture: "05:42",
-          lastDeparture: "22:30",
+          firstDeparture: "05:47",
+          lastDeparture: "22:00",
         },
       ],
       cost: "2",

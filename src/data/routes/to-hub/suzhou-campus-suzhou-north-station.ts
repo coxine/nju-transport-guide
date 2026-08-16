@@ -1,0 +1,60 @@
+import type { RouteEntry } from "../../../types";
+
+export const suzhouCampusSuzhouNorthStation: RouteEntry = {
+  originId: "suzhou-campus",
+  destId: "suzhou-north-station",
+  day: [
+    {
+      nodes: [
+        { id: "nju-su", name: "南京大学东" },
+        { id: "sxq-su", name: "苏州新区火车站" },
+        { id: "ph-su", name: "平河路" },
+        { id: "szb-su", name: "高铁苏州北站" },
+      ],
+      paths: [
+        {
+          id: "p1",
+          fromNodeId: "nju-su",
+          toNodeId: "sxq-su",
+          mode: "tram",
+          duration: "47",
+          stopCount: "13",
+          direction: "苏州新区火车站",
+          lineName: "有轨电车2号线",
+          lineKey: "su-tram-2",
+          firstDeparture: "05:47",
+          lastDeparture: "22:00",
+        },
+        {
+          id: "p2",
+          fromNodeId: "sxq-su",
+          toNodeId: "ph-su",
+          mode: "metro",
+          duration: "21",
+          stopCount: "10",
+          direction: "桑田岛",
+          lineName: "6号线",
+          lineKey: "su-line-6",
+          firstDeparture: "05:40",
+          lastDeparture: "22:20（周一-四）/ 22:45（周五-日）",
+        },
+        {
+          id: "p3",
+          fromNodeId: "ph-su",
+          toNodeId: "szb-su",
+          mode: "metro",
+          duration: "18",
+          stopCount: "8",
+          direction: "骑河",
+          lineName: "2号线",
+          lineKey: "su-line-2",
+          firstDeparture: "05:51",
+          lastDeparture: "23:21（周一-四）/ 23:51（周五-日）",
+        },
+      ],
+      cost: "7",
+      hours: "2",
+    },
+  ],
+  night: [],
+};

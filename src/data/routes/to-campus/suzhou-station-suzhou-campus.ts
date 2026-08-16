@@ -55,12 +55,6 @@ export const suzhouStationSuzhouCampus: RouteEntry = {
       ],
       cost: "5",
       hours: "1.5",
-      alerts: [
-        {
-          type: "info",
-          message: "苏州校区夜间无公共交通运行，建议打车出行。",
-        },
-      ],
     },
   ],
   night: [],
