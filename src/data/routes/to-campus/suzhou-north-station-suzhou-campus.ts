@@ -1,0 +1,67 @@
+import type { RouteEntry } from "../../../types";
+
+export const suzhouNorthStationSuzhouCampus: RouteEntry = {
+  originId: "suzhou-north-station",
+  destId: "suzhou-campus",
+  day: [
+    {
+      nodes: [
+        { id: "szb-su", name: "高铁苏州北站" },
+        { id: "ph-su", name: "平河路" },
+        { id: "sxq-su", name: "苏州新区火车站" },
+        { id: "nju-su", name: "南京大学东" },
+      ],
+      paths: [
+        {
+          id: "su31",
+          fromNodeId: "szb-su",
+          toNodeId: "ph-su",
+          mode: "metro",
+          duration: "18",
+          stopCount: "8",
+          direction: "桑田岛",
+          lineName: "2号线",
+          lineKey: "su-line-2",
+          firstDeparture: "05:44",
+          lastDeparture: "23:10",
+        },
+        {
+          id: "su32",
+          fromNodeId: "ph-su",
+          toNodeId: "sxq-su",
+          mode: "metro",
+          duration: "21",
+          stopCount: "10",
+          direction: "苏州新区火车站",
+          lineName: "6号线",
+          lineKey: "su-line-6",
+          firstDeparture: "06:27",
+          lastDeparture: "23:07（周一-四）/ 23:37（周五-日）",
+          tips: "从2号口出站并穿过地道，步行约10-15分钟",
+        },
+        {
+          id: "su33",
+          fromNodeId: "sxq-su",
+          toNodeId: "nju-su",
+          mode: "tram",
+          duration: "47",
+          stopCount: "13",
+          direction: "南京大学东",
+          lineName: "有轨电车2号线",
+          lineKey: "su-tram-2",
+          firstDeparture: "05:42",
+          lastDeparture: "22:30",
+        },
+      ],
+      cost: "7",
+      hours: "2",
+      alerts: [
+        {
+          type: "info",
+          message: "苏州校区夜间无公共交通运行，建议打车出行。",
+        },
+      ],
+    },
+  ],
+  night: [],
+};

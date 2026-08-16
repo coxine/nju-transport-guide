@@ -93,9 +93,7 @@ export function RoutePage() {
             >
               <RiEmotionSadLine size={36} className="mx-auto" />
               <p className="mt-2 text-[18px]">
-                {isNight
-                  ? "该路线暂无夜间方案"
-                  : "暂无可用路线，请尝试其他起终点"}
+                暂无公共交通路线方案，建议打车出行。
               </p>
             </div>
           ) : (

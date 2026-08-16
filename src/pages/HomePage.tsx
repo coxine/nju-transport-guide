@@ -16,13 +16,24 @@ export function HomePage() {
   const [isNight, setIsNight] = useState(new Date().getHours() < 6);
   const navigate = useNavigate();
 
-  const { originOptions, destOptions } = useMemo(() => {
+  const { originOptions, destOptions, routes } = useMemo(() => {
     const data = sceneRouteData[scene];
     return {
       originOptions: data.origins,
       destOptions: data.destinations,
+      routes: data.routes,
     };
   }, [scene]);
+
+  const disabledDestIds = useMemo(() => {
+    if (!originId) return null;
+    const reachable = new Set(
+      routes.filter((r) => r.originId === originId).map((r) => r.destId),
+    );
+    return new Set(
+      destOptions.filter((d) => !reachable.has(d.id)).map((d) => d.id),
+    );
+  }, [originId, routes, destOptions]);
 
   const canSearch = originId && destId;
 
@@ -30,6 +41,16 @@ export function HomePage() {
     setScene(key);
     setOriginId(null);
     setDestId(null);
+  };
+
+  const handleOriginChange = (id: string) => {
+    setOriginId(id);
+    if (
+      destId &&
+      !routes.some((r) => r.originId === id && r.destId === destId)
+    ) {
+      setDestId(null);
+    }
   };
 
   return (
@@ -59,7 +80,7 @@ export function HomePage() {
           label="出发地"
           options={originOptions}
           selectedId={originId}
-          onChange={setOriginId}
+          onChange={handleOriginChange}
           activeClass="bg-primary"
         />
         <StationSelector
@@ -68,6 +89,7 @@ export function HomePage() {
           selectedId={destId}
           onChange={setDestId}
           activeClass="bg-primary"
+          disabledIds={disabledDestIds ?? undefined}
         />
 
         <label className="flex items-center gap-2 py-3 cursor-pointer">

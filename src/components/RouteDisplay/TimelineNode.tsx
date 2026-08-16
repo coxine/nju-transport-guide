@@ -1,6 +1,11 @@
 import type { StationNode, PathSegment } from "../../types";
 import { getLineColor, getLineTextColor } from "../../data/lines";
-import { RiTrainLine, RiBusLine, RiWalkLine } from "@remixicon/react";
+import {
+  RiTrainLine,
+  RiBusLine,
+  RiWalkLine,
+  RiSubwayLine,
+} from "@remixicon/react";
 
 export type TimelinePosition = "start" | "end" | "intermediate";
 
@@ -94,6 +99,8 @@ function modeLabel(mode: PathSegment["mode"]): string {
       return "公交";
     case "walk":
       return "步行";
+    case "tram":
+      return "有轨电车";
   }
 }
 
@@ -113,6 +120,8 @@ function ModeIcon({
       return <RiBusLine size={MODE_ICON_SIZE} className={cls} />;
     case "walk":
       return <RiWalkLine size={MODE_ICON_SIZE} className={cls} />;
+    case "tram":
+      return <RiSubwayLine size={MODE_ICON_SIZE} className={cls} />;
   }
 }
 

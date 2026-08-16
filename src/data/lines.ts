@@ -2,7 +2,7 @@ interface LineInfo {
   name: string;
   color: string;
   textColor: string;
-  mode: "metro" | "bus";
+  mode: "metro" | "bus" | "tram";
 }
 
 export const LINES: Record<string, LineInfo> = {
@@ -125,6 +125,30 @@ export const LINES: Record<string, LineInfo> = {
     color: "#FFC600",
     textColor: "#FFFFFF",
     mode: "metro",
+  },
+  "su-line-2": {
+    name: "2号线",
+    color: "#E8374A",
+    textColor: "#FFFFFF",
+    mode: "metro",
+  },
+  "su-line-4": {
+    name: "4号线",
+    color: "#006FBA",
+    textColor: "#FFFFFF",
+    mode: "metro",
+  },
+  "su-line-6": {
+    name: "6号线",
+    color: "#21B8ED",
+    textColor: "#FFFFFF",
+    mode: "metro",
+  },
+  "su-tram-2": {
+    name: "有轨电车2号线",
+    color: "#E8374A",
+    textColor: "#FFFFFF",
+    mode: "tram",
   },
   "nj-bus": {
     name: "南京公交",
