@@ -5,6 +5,8 @@ import {
   RiBusLine,
   RiWalkLine,
   RiSubwayLine,
+  RiTrainWifiLine,
+  RiRouteLine,
 } from "@remixicon/react";
 
 export type TimelinePosition = "start" | "end" | "intermediate";
@@ -101,6 +103,10 @@ function modeLabel(mode: PathSegment["mode"]): string {
       return "步行";
     case "tram":
       return "有轨电车";
+    case "train":
+      return "火车";
+    case "city":
+      return "市内交通";
   }
 }
 
@@ -122,6 +128,10 @@ function ModeIcon({
       return <RiWalkLine size={MODE_ICON_SIZE} className={cls} />;
     case "tram":
       return <RiSubwayLine size={MODE_ICON_SIZE} className={cls} />;
+    case "train":
+      return <RiTrainWifiLine size={MODE_ICON_SIZE} className={cls} />;
+    case "city":
+      return <RiRouteLine size={MODE_ICON_SIZE} className={cls} />;
   }
 }
 
@@ -156,17 +166,19 @@ function PathInfo({ path, isNight }: { path: PathSegment; isNight: boolean }) {
           </span>
         )}
       </div>
-      <div
-        className={`mt-0.5 flex items-center gap-1 text-[14px] ${colorSecondary}`}
-      >
-        {path.stopCount != null && (
-          <>
-            <span>{path.stopCount}站</span>
-            <span className={`${colorMuted}`}>|</span>
-          </>
-        )}
-        <span>{path.duration}分钟</span>
-      </div>
+      {(path.stopCount != null || path.duration) && (
+        <div
+          className={`mt-0.5 flex items-center gap-1 text-[14px] ${colorSecondary}`}
+        >
+          {path.stopCount != null && (
+            <>
+              <span>{path.stopCount}站</span>
+              <span className={`${colorMuted}`}>|</span>
+            </>
+          )}
+          {path.duration && <span>{path.duration}分钟</span>}
+        </div>
+      )}
       {path.tips && (
         <p className="mt-1 text-[14px] text-amber-600 whitespace-pre-line">
           {path.tips}

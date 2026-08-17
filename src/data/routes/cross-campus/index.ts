@@ -6,6 +6,12 @@ import { gulouPukou } from "./gulou-pukou";
 import { pukouGulou } from "./pukou-gulou";
 import { xianlinPukou } from "./xianlin-pukou";
 import { pukouXianlin } from "./pukou-xianlin";
+import { gulouSuzhouCampus } from "./gulou-suzhou-campus";
+import { xianlinSuzhouCampus } from "./xianlin-suzhou-campus";
+import { pukouSuzhouCampus } from "./pukou-suzhou-campus";
+import { suzhouCampusGulou } from "./suzhou-campus-gulou";
+import { suzhouCampusXianlin } from "./suzhou-campus-xianlin";
+import { suzhouCampusPukou } from "./suzhou-campus-pukou";
 
 const routes = [
   gulouXianlin,
@@ -14,6 +20,12 @@ const routes = [
   pukouGulou,
   xianlinPukou,
   pukouXianlin,
+  gulouSuzhouCampus,
+  xianlinSuzhouCampus,
+  pukouSuzhouCampus,
+  suzhouCampusGulou,
+  suzhouCampusXianlin,
+  suzhouCampusPukou,
 ];
 
 const uniqueIds = (ids: string[]) =>
