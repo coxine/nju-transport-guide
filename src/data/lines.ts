@@ -156,6 +156,12 @@ export const LINES: Record<string, LineInfo> = {
     textColor: "#FFFFFF",
     mode: "bus",
   },
+  "nju-bus": {
+    name: "南大校园班车",
+    color: "#69075A",
+    textColor: "#FFFFFF",
+    mode: "bus",
+  },
 };
 
 export function getLineColor(lineKey?: string): string {
