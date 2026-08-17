@@ -7,7 +7,7 @@ export const gulouPukou: RouteEntry = {
     {
       nodes: [
         { id: "fym-glpk", name: "费彝民楼北门广场" },
-        { id: "pkcampus-bus", name: "浦口校区" },
+        { id: "pkcampus-bus", name: "浦口校区第十五食堂" },
       ],
       paths: [
         {
@@ -28,7 +28,7 @@ export const gulouPukou: RouteEntry = {
         {
           type: "info",
           message:
-            "班车仅限周一-周五运行。\n若出发时间无班车，可参考方案2，利用地铁前往浦口校区。",
+            "班车仅在学期内工作日运行，考试周可能减班。\n若出发时间无班车，可参考方案2，利用地铁前往浦口校区。",
         },
       ],
     },
