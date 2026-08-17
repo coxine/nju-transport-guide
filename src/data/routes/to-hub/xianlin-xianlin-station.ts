@@ -20,7 +20,7 @@ export const xianlinXianlinStation: RouteEntry = {
           lineKey: "nj-bus",
           firstDeparture: "06:00",
           lastDeparture: "20:00",
-          tips: "可在微信小程序“优点出行”的“动态公交”栏目预约",
+          tips: "无固定班次，须在微信小程序“优点出行”的“动态公交”栏目预约",
         },
       ],
       cost: "3",
