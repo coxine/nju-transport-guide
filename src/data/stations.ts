@@ -13,4 +13,5 @@ export const STATIONS: Record<string, StationMeta> = {
   "suzhou-station": { name: "苏州站" },
   "suzhou-north-station": { name: "苏州北站" },
   "suzhou-campus": { name: "苏州校区" },
+  "xianlin-station": { name: "仙林站" },
 };

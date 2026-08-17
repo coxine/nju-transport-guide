@@ -12,6 +12,7 @@ import { nanjingStationPukou } from "./nanjing-station-pukou";
 import { suzhouXinquStationSuzhouCampus } from "./suzhou-xinqu-station-suzhou-campus";
 import { suzhouStationSuzhouCampus } from "./suzhou-station-suzhou-campus";
 import { suzhouNorthStationSuzhouCampus } from "./suzhou-north-station-suzhou-campus";
+import { xianlinStationXianlin } from "./xianlin-station-xianlin";
 
 const routes = [
   nanjingSouthXianlin,
@@ -26,6 +27,7 @@ const routes = [
   suzhouXinquStationSuzhouCampus,
   suzhouStationSuzhouCampus,
   suzhouNorthStationSuzhouCampus,
+  xianlinStationXianlin,
 ];
 
 const uniqueIds = (ids: string[]) =>
