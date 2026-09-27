@@ -50,13 +50,6 @@ export const nanjingSouthXianlin: RouteEntry = {
       ],
       cost: "6",
       hours: "1",
-      alerts: [
-        {
-          type: "info",
-          message:
-            "从南京南站到仙林大学城，亦有南京公交开行的定制直达公交H46/47路，班次较少，可在微信小程序“优点出行“的“校园巴士”栏目预约。",
-        },
-      ],
     },
   ],
   night: [
