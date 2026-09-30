@@ -5,6 +5,66 @@ export const nanjingSouthXianlin: RouteEntry = {
   destId: "xianlin",
   day: [
     {
+      alerts: [
+        {
+          type: "tip",
+          message:
+            "出站时若靠近北出站口，请选择方案1，乘坐6号线。\n若靠近南出站口，请选择方案2，乘坐3号线。",
+        },
+      ],
+      nodes: [
+        { id: "la-gl", name: "南京南站" },
+        { id: "ns-lagl", name: "明故宫" },
+        { id: "glz-lagl", name: "南大仙林校区" },
+        { id: "glcampus-lagl", name: "仙林校区南门" },
+      ],
+      paths: [
+        {
+          id: "pl1",
+          fromNodeId: "la-gl",
+          toNodeId: "ns-lagl",
+          mode: "metro",
+          duration: "12",
+          stopCount: "7",
+          direction: "栖霞山",
+          lineName: "6号线",
+          lineKey: "nj-line-6",
+          firstDeparture: "06:00",
+          lastDeparture: "23:38",
+        },
+        {
+          id: "pl2",
+          fromNodeId: "ns-lagl",
+          toNodeId: "glz-lagl",
+          mode: "metro",
+          duration: "27",
+          stopCount: "11",
+          direction: "经天路",
+          lineName: "2号线",
+          lineKey: "nj-line-2",
+          firstDeparture: "06:17",
+          lastDeparture: "23:40（周日-四）/ 00:10（周五-六）",
+        },
+        {
+          id: "pl3",
+          fromNodeId: "glz-lagl",
+          toNodeId: "glcampus-lagl",
+          mode: "walk",
+          duration: "3-5",
+          tips: "出站后穿过地下通道，即可到达仙林校区南门",
+        },
+      ],
+      cost: "6",
+      hours: "1",
+    },
+    {
+      alerts: [
+        {
+          type: "tip",
+          message:
+            "出站时若靠近北出站口，请选择方案1，乘坐6号线。\n若靠近南出站口，请选择方案2，乘坐3号线。",
+        },
+      ],
       nodes: [
         { id: "la-gl", name: "南京南站" },
         { id: "ns-lagl", name: "大行宫" },

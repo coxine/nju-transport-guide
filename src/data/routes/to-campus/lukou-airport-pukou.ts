@@ -24,7 +24,7 @@ export const lukouAirportPukou: RouteEntry = {
           lineName: "S1号线",
           lineKey: "nj-line-s1",
           firstDeparture: "06:00",
-          lastDeparture: "22:42",
+          lastDeparture: "23:02",
           tips: "南京南站换乘通道较长，建议预留充足换乘时间",
         },
         {
