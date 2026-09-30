@@ -5,6 +5,65 @@ export const xianlinNanjingSouth: RouteEntry = {
   destId: "nanjing-south",
   day: [
     {
+      alerts: [
+        {
+          type: "tip",
+          message:
+            "若所乘车次的检票口编号较小（更接近1号），请选择方案1，从北广场进站。\n若检票口编号较大（更接近28号），请选择方案2，从南广场进站；",
+        },
+      ],
+      nodes: [
+        { id: "glcampus-lagl", name: "仙林校区南门" },
+        { id: "glz-lagl", name: "南大仙林校区" },
+        { id: "ns-lagl", name: "明故宫" },
+        { id: "la-gl", name: "南京南站" },
+      ],
+      paths: [
+        {
+          id: "p1",
+          fromNodeId: "glcampus-lagl",
+          toNodeId: "glz-lagl",
+          mode: "walk",
+          duration: "3-5",
+        },
+        {
+          id: "p2",
+          fromNodeId: "glz-lagl",
+          toNodeId: "ns-lagl",
+          mode: "metro",
+          duration: "26",
+          stopCount: "11",
+          direction: "鱼嘴",
+          lineName: "2号线",
+          lineKey: "nj-line-2",
+          firstDeparture: "06:02",
+          lastDeparture: "23:02（周日-四）/ 23:32（周五-六）",
+        },
+        {
+          id: "p3",
+          fromNodeId: "ns-lagl",
+          toNodeId: "la-gl",
+          mode: "metro",
+          duration: "12",
+          stopCount: "7",
+          direction: "南京南站/空港新城江宁",
+          lineName: "6号线",
+          lineKey: "nj-line-6",
+          firstDeparture: "06:32",
+          lastDeparture: "23:32",
+        },
+      ],
+      cost: "6",
+      hours: "1",
+    },
+    {
+      alerts: [
+        {
+          type: "tip",
+          message:
+            "若所乘车次的检票口编号较小（更接近1号），请选择方案1，从北广场进站。\n若检票口编号较大（更接近28号），请选择方案2，从南广场进站；",
+        },
+      ],
       nodes: [
         { id: "glcampus-lagl", name: "仙林校区南门" },
         { id: "glz-lagl", name: "南大仙林校区" },
